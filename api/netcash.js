@@ -138,4 +138,17 @@ async function suiteAction(req,res,action){const user=await staffAction(req,['ow
   case'blocked_accounts':return res.status(200).json({ok:true,accounts:await syncBlockedAccounts({startDate:body.startDate||new Date(Date.now()-7*86400000).toISOString().slice(0,10),endDate:body.endDate||new Date().toISOString().slice(0,10)})});
   default:throw new HttpError(400,'Unknown Netcash lender-suite action.','invalid_netcash_action');}}
 
-export default async function handler(req,res){if(!allowMethod(req,res,['POST']))return;const action=String(req.query?.action||'').trim();try{if(action==='card_token_return')return await publicCardTokenReturn(req,res);if(action==='bulk_statement_ingest')return await bulkStatementIngress(req,res);if(action==='emandate_postback')return await emandatePostback(req,res);if(action==='notify')return await payNowNotify(req,res);if(action==='debicheck_postback')return await debicheckPostback(req,res);if(action==='request')return await clientRequest(req,res);if(action==='admin_request')return await adminRequest(req,res);if(action==='loan_setup')return await loanSetup(req,res);if(action==='maintenance')return await maintenance(req,res);return await suiteAction(req,res,action);}catch(error){return sendError(res,error,`Netcash ${action||'request'} failed`);}}
+export default async function handler(req,res){
+  if(!allowMethod(req,res,['POST']))return;
+  const action=String(req.query?.action||'').trim();
+  const allowed=new Set(['card_token_return','bulk_statement_ingest','emandate_postback','notify','debicheck_postback','request']);
+  try{
+    if(!allowed.has(action))throw new HttpError(404,'Unknown client Netcash action.','invalid_netcash_action');
+    if(action==='card_token_return')return await publicCardTokenReturn(req,res);
+    if(action==='bulk_statement_ingest')return await bulkStatementIngress(req,res);
+    if(action==='emandate_postback')return await emandatePostback(req,res);
+    if(action==='notify')return await payNowNotify(req,res);
+    if(action==='debicheck_postback')return await debicheckPostback(req,res);
+    if(action==='request')return await clientRequest(req,res);
+  }catch(error){return sendError(res,error,`Netcash ${action||'request'} failed`);}
+}
