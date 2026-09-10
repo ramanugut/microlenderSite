@@ -1,0 +1,40 @@
+.loan-payment-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:18px 0;padding:16px;border:1px solid #dce8f8;border-radius:16px;background:#f5f9ff}
+.loan-payment-actions p{flex-basis:100%;margin:2px 0 0;color:#617189;font-size:.82rem}
+.payment-notice{position:fixed;z-index:10000;right:20px;bottom:22px;max-width:min(430px,calc(100vw - 32px));padding:14px 18px;border-radius:12px;background:#10233f;color:#fff;box-shadow:0 16px 45px rgba(16,35,63,.25);font-weight:700}
+.payment-notice.success{background:#087f5b}.payment-notice.error{background:#b42318}
+.repayment-actions{display:flex;flex-wrap:wrap;gap:6px}.repayment-actions .row-action{white-space:nowrap}
+body.payment-modal-open{overflow:hidden}
+.payment-modal{position:fixed;z-index:20000;inset:0;display:grid;place-items:center;padding:24px}
+.payment-modal[hidden]{display:none}
+.payment-modal__backdrop{position:absolute;inset:0;background:rgba(6,19,39,.68);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.payment-modal__card{position:relative;width:min(480px,100%);padding:30px;border:1px solid rgba(191,211,238,.8);border-radius:26px;background:#fff;color:#10233f;box-shadow:0 30px 90px rgba(1,20,48,.34);transform:translateY(0)}
+.payment-modal__card--open{animation:paymentModalIn .24s ease-out both}
+.payment-modal__close{position:absolute;top:16px;right:16px;width:38px;height:38px;border:0;border-radius:50%;background:#eef4fc;color:#29415f;font:500 1.55rem/1 Arial,sans-serif;cursor:pointer}
+.payment-modal__close:hover{background:#dfeafb}
+.payment-modal__icon{display:grid;place-items:center;width:52px;height:52px;margin-bottom:17px;border-radius:16px;background:linear-gradient(145deg,#0757b7,#0879df);box-shadow:0 10px 25px rgba(8,91,190,.24)}
+.payment-modal__icon svg{width:28px;height:28px;fill:#fff}
+.payment-modal__eyebrow{margin:0 0 5px;color:#0871d1;font-size:.76rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.payment-modal h2{margin:0;font-size:clamp(1.45rem,4vw,1.85rem);line-height:1.15;color:#10233f}
+.payment-modal__copy{margin:10px 0 20px;color:#5d6d82;font-size:.94rem;line-height:1.55}
+.payment-modal__amount{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 20px;border-radius:17px;background:linear-gradient(125deg,#0a315e,#075ebd);color:#fff}
+.payment-modal__amount span{font-size:.82rem;opacity:.82}
+.payment-modal__amount strong{white-space:nowrap;font-size:1.45rem;letter-spacing:-.025em}
+.payment-modal__saving{display:grid;grid-template-columns:1fr auto;align-items:center;gap:2px 16px;margin-top:10px;padding:13px 16px;border:1px solid #bdebd8;border-radius:14px;background:#effbf6;color:#087553}
+.payment-modal__saving span{font-size:.8rem;font-weight:700}
+.payment-modal__saving strong{grid-row:1/3;grid-column:2;font-size:1.08rem}
+.payment-modal__saving small{font-size:.72rem;color:#42816d}
+.payment-modal__note{margin:16px 2px 22px;color:#617189;font-size:.78rem;line-height:1.5}
+.payment-modal__actions{display:flex;justify-content:flex-end;gap:10px}
+.payment-modal__button{min-height:46px;padding:0 18px;border-radius:13px;font:800 .88rem/1 inherit;cursor:pointer;transition:transform .15s ease,background .15s ease,box-shadow .15s ease}
+.payment-modal__button:hover{transform:translateY(-1px)}
+.payment-modal__button--secondary{border:1px solid #cbd9eb;background:#fff;color:#183452}
+.payment-modal__button--secondary:hover{background:#f4f8fd}
+.payment-modal__button--primary{border:1px solid #0871d1;background:#0871d1;color:#fff;box-shadow:0 9px 20px rgba(8,113,209,.22)}
+.payment-modal__button--primary:hover{background:#0663b8}
+.payment-modal button:focus-visible{outline:3px solid rgba(8,113,209,.3);outline-offset:3px}
+@keyframes paymentModalIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+@media(max-width:680px){.loan-payment-actions>.btn{width:100%}.payment-notice{right:16px;bottom:82px}.payment-modal{align-items:end;padding:12px}.payment-modal__card{padding:26px 20px 20px;border-radius:24px 24px 18px 18px}.payment-modal__actions{display:grid;grid-template-columns:1fr}.payment-modal__button--primary{grid-row:1}.payment-modal__amount{align-items:flex-start;flex-direction:column;gap:5px}.payment-modal__amount strong{font-size:1.7rem}}
+@media(prefers-reduced-motion:reduce){.payment-modal__card--open{animation:none}.payment-modal__button{transition:none}}
+
+.payment-state-note{display:inline-flex;align-items:center;min-height:34px;padding:0 10px;border-radius:999px;background:#eef4f8;color:#5f7084;font-size:.76rem;font-weight:800;white-space:nowrap}
+.payment-modal__icon--letter{color:#fff;font-size:1.15rem;font-weight:900}

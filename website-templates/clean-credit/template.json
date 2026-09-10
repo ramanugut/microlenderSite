@@ -1,0 +1,20 @@
+{
+  "id": "clean-credit",
+  "name": "Clean Credit",
+  "version": 1,
+  "entry": "index.html",
+  "description": "Friendly modern lending website with a calculator-led hero.",
+  "sections": [
+    "calculator-hero",
+    "security-strip",
+    "benefits",
+    "how-it-works",
+    "faq",
+    "final-cta"
+  ],
+  "integration": {
+    "apply": "/apply.html",
+    "login": "/login.html",
+    "account": "/account.html"
+  }
+}

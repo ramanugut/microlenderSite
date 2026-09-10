@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Apply online | KredRun</title>
+  <meta name="description" content="Complete a secure short-term credit application with affordability details and supporting documents.">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/application.css">
+  <link rel="stylesheet" href="assets/css/account.css">
+  <link rel="stylesheet" href="assets/css/smart-application.css">
+</head>
+<body class="application-page">
+  <div data-site-header></div>
+
+  <main class="application-shell">
+    <section class="application-intro">
+      <div class="container application-intro-inner">
+        <div>
+          <span class="eyebrow">Online application</span>
+          <h1>Apply without typing the same things twice.</h1>
+          <p>Choose your loan first. If you have applied before, we reuse your saved profile, expenses, bank details and only eligible verified documents.</p>
+        </div>
+        <div class="application-security"><span class="security-icon">✓</span><div><strong>Your information matters</strong><small>Never enter your banking PIN, password or OTP anywhere in this form.</small></div></div>
+      </div>
+    </section>
+
+    <section class="application-main">
+      <div class="container application-layout">
+        <aside class="application-sidebar" aria-label="Application progress">
+          <div class="progress-card">
+            <div class="progress-head"><span>Your application</span><strong data-progress-text>Step 1 of 6</strong></div>
+            <div class="progress-track"><span data-progress-bar></span></div>
+            <ol class="step-list">
+              <li class="active" data-step-nav="1"><span>1</span><div><strong>Loan</strong><small>Amount and term</small></div></li>
+              <li data-step-nav="2"><span>2</span><div><strong>About you</strong><small>Personal details</small></div></li>
+              <li data-step-nav="3"><span>3</span><div><strong>Work & income</strong><small>Only what applies</small></div></li>
+              <li data-step-nav="4"><span>4</span><div><strong>Affordability</strong><small>Monthly expenses</small></div></li>
+              <li data-step-nav="5"><span>5</span><div><strong>Bank & documents</strong><small>Reuse when allowed</small></div></li>
+              <li data-step-nav="6"><span>6</span><div><strong>Review</strong><small>Check and submit</small></div></li>
+            </ol>
+          </div>
+          <div class="sidebar-help"><strong>Need help?</strong><p>Your unfinished non-sensitive answers are saved in this browser for up to 7 days.</p><a href="help.html">Visit Help</a></div>
+        </aside>
+
+        <div class="application-content">
+          <form id="loanApplication" novalidate enctype="multipart/form-data">
+            <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <section class="form-step active" data-step="1">
+              <div class="step-heading"><span class="step-kicker">Step 1</span><h2>Choose your loan</h2><p>Your amount and term follow you into the application automatically.</p></div>
+              <div class="choice-panel">
+                <div class="amount-display"><span>I would like to apply for</span><strong data-app-amount>R 2 500</strong></div>
+                <label class="field-label" for="loanAmount">Loan amount</label>
+                <input id="loanAmount" name="loanAmount" type="range" min="500" max="10000" step="250" value="2500">
+                <div class="range-minmax"><span>R500</span><span>R10 000</span></div>
+                <div class="term-header"><span>Repayment period</span><strong data-app-term>2 months</strong></div>
+                <input id="loanTerm" name="loanTerm" type="range" min="1" max="6" step="1" value="2">
+                <div class="range-minmax"><span>1 month</span><span>6 months</span></div>
+                <div class="soft-notice"><strong>Important</strong><span>This is not a quote or credit offer. Full fees and repayment must be shown before you accept an approved loan.</span></div>
+              </div>
+              <div class="soft-notice application-auth-gate" data-auth-gate hidden><strong>Continue your application</strong><span>We will quickly verify your ID before the next step.</span><div class="auth-gate-actions"><a class="btn btn-primary" href="login.html?next=apply.html">Continue</a></div></div>
+            </section>
+
+            <section class="form-step" data-step="2">
+              <div class="step-heading"><span class="step-kicker">Step 2</span><h2>About you</h2><p>Use your legal details exactly as they appear on your identification document.</p></div>
+              <div class="prefill-note" data-profile-prefill hidden><strong>We filled what we already know.</strong><span>Please change anything that is no longer correct.</span></div>
+              <div class="form-grid two">
+                <div class="field"><label for="firstName">First name</label><input id="firstName" name="firstName" autocomplete="given-name" required maxlength="80"><small class="field-error"></small></div>
+                <div class="field"><label for="lastName">Surname</label><input id="lastName" name="lastName" autocomplete="family-name" required maxlength="80"><small class="field-error"></small></div>
+                <div class="field full"><label for="idNumber">South African ID number</label><input id="idNumber" name="idNumber" inputmode="numeric" autocomplete="off" required minlength="13" maxlength="13" pattern="[0-9]{13}" placeholder="13 digits"><small class="field-hint id-derived" data-id-derived hidden></small><small class="field-error"></small></div>
+                <div class="field"><label for="mobile">Mobile number</label><input id="mobile" name="mobile" type="tel" inputmode="tel" autocomplete="tel" required maxlength="20" placeholder="e.g. 082 123 4567"><small class="field-error"></small></div>
+                <div class="field"><label for="email">Account email address</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="120"><small class="field-hint">Linked to your signed-in account.</small><small class="field-error"></small></div>
+                <div class="field"><label for="maritalStatus">Marital status</label><select id="maritalStatus" name="maritalStatus" data-profile-options="maritalStatuses" required><option value="">Select</option></select><small class="field-error"></small></div>
+                <div class="field"><label for="hasDependants">Do you support dependants?</label><select id="hasDependants" name="hasDependants" required><option value="">Select</option><option value="no">No</option><option value="yes">Yes</option></select><small class="field-error"></small></div>
+                <div class="field" data-dependants-count hidden><label for="dependants">How many?</label><input id="dependants" name="dependants" type="number" min="1" max="20" value="1"><small class="field-error"></small></div>
+                <div class="field"><label for="province">Province</label><select id="province" name="province" data-profile-options="provinces" required><option value="">Select</option></select><small class="field-error"></small></div>
+                <div class="field full"><label for="address">Residential address</label><input id="address" name="address" autocomplete="street-address" required maxlength="180"><small class="field-error"></small></div>
+              </div>
+            </section>
+
+            <section class="form-step" data-step="3">
+              <div class="step-heading"><span class="step-kicker">Step 3</span><h2>Work and income</h2><p>We only show questions that make sense for your income type.</p></div>
+              <div class="prefill-note" data-profile-prefill hidden><strong>Previous income details loaded.</strong><span>Update only what has changed.</span></div>
+              <div class="form-grid two">
+                <div class="field"><label for="employmentStatus">Income source</label><select id="employmentStatus" name="employmentStatus" data-profile-options="employmentStatuses" required><option value="">Select</option></select><small class="field-error"></small></div>
+                <div class="field"><label for="employerName" data-employer-label>Employer / income source name</label><input id="employerName" name="employerName" required maxlength="120"><small class="field-error"></small></div>
+                <div class="field" data-job-title-wrap><label for="jobTitle" data-job-title-label>Job title / occupation</label><input id="jobTitle" name="jobTitle" required maxlength="100"><small class="field-error"></small></div>
+                <div class="field"><label for="employmentStartDate">When did this job / income start?</label><input id="employmentStartDate" name="employmentStartDate" type="month" required><small class="field-hint" data-employment-duration></small><small class="field-error"></small></div>
+                <div class="field money-field"><label for="monthlyIncome">Net monthly income</label><span class="money-prefix">R</span><input id="monthlyIncome" name="monthlyIncome" type="number" min="0" step="0.01" inputmode="decimal" required><small class="field-error"></small></div>
+                <div class="field"><label for="payFrequency">How often are you paid?</label><select id="payFrequency" name="payFrequency" data-profile-options="payFrequencies" required><option value="">Select</option></select><small class="field-error"></small></div>
+                <div class="field" data-pay-day-wrap hidden><label for="payDay">What day of the month are you normally paid?</label><input id="payDay" name="payDay" type="number" min="1" max="31" inputmode="numeric" placeholder="e.g. 25"><small class="field-hint">We calculate your next pay date automatically.</small><small class="field-error"></small></div>
+                <div class="field" data-next-pay-wrap><label for="nextPayDate">Next expected pay date</label><input id="nextPayDate" name="nextPayDate" type="date" required><small class="field-error"></small></div>
+              </div>
+            </section>
+
+            <section class="form-step" data-step="4">
+              <div class="step-heading"><span class="step-kicker">Step 4</span><h2>Monthly affordability</h2><p>Enter normal monthly household and debt expenses. We calculate the totals for you.</p></div>
+              <div class="prefill-note" data-profile-prefill hidden><strong>Previous affordability details loaded.</strong><span>Review them and change anything that is different now.</span></div>
+              <div class="prefill-note subtle" data-previous-expenses hidden><strong>No need to type them again.</strong><span>These amounts came from your previous application/profile.</span></div>
+              <div class="affordability-summary"><div><span>Net monthly income</span><strong data-income-summary>R 0</strong></div><div><span>Total expenses</span><strong data-expense-summary>R 0</strong></div><div><span>Expense-to-income</span><strong data-ratio-summary>—</strong></div><div class="remaining"><span>Estimated amount left</span><strong data-remaining-summary>R 0</strong></div></div>
+              <div class="form-grid two affordability-fields">
+                <div class="field money-field"><label for="housingExpense">Rent / bond</label><span class="money-prefix">R</span><input id="housingExpense" name="housingExpense" type="number" min="0" step="0.01" required></div>
+                <div class="field money-field"><label for="foodExpense">Groceries & household</label><span class="money-prefix">R</span><input id="foodExpense" name="foodExpense" type="number" min="0" step="0.01" required></div>
+                <div class="field money-field"><label for="transportExpense">Transport</label><span class="money-prefix">R</span><input id="transportExpense" name="transportExpense" type="number" min="0" step="0.01" required></div>
+                <div class="field money-field"><label for="utilitiesExpense">Utilities & communication</label><span class="money-prefix">R</span><input id="utilitiesExpense" name="utilitiesExpense" type="number" min="0" step="0.01" required></div>
+                <div class="field money-field"><label for="insuranceExpense">Insurance / medical</label><span class="money-prefix">R</span><input id="insuranceExpense" name="insuranceExpense" type="number" min="0" step="0.01" required></div>
+                <div class="field money-field"><label for="dependantExpense">School / childcare / dependants</label><span class="money-prefix">R</span><input id="dependantExpense" name="dependantExpense" type="number" min="0" step="0.01" required></div>
+                <div class="field money-field"><label for="debtExpense">Existing loans / credit repayments</label><span class="money-prefix">R</span><input id="debtExpense" name="debtExpense" type="number" min="0" step="0.01" required></div>
+                <div class="field money-field"><label for="otherExpense">Other regular expenses</label><span class="money-prefix">R</span><input id="otherExpense" name="otherExpense" type="number" min="0" step="0.01" required></div>
+              </div>
+              <div class="soft-notice"><strong>This is an affordability input, not an approval result.</strong><span>The lender still needs to assess your application and may request more information.</span></div>
+            </section>
+
+            <section class="form-step" data-step="5">
+              <div class="step-heading"><span class="step-kicker">Step 5</span><h2>Bank details and documents</h2><p>Your branch code and account-holder name are handled automatically. Verified documents are reused only when they are still suitable for a new application.</p></div>
+              <div class="prefill-note" data-profile-prefill hidden><strong>Saved bank details loaded.</strong><span>Check the bank and account number before continuing.</span></div>
+              <div class="form-grid two">
+                <div class="field"><label for="bankName">Bank</label><select id="bankName" name="bankName" data-profile-options="banks" data-placeholder="Select your bank" required><option value="">Select your bank</option></select><small class="bank-auto-note">Universal branch code selected automatically.</small><small class="field-error"></small></div>
+                <div class="field"><label for="accountType">Account type</label><select id="accountType" name="accountType" data-profile-options="accountTypes" required><option value="">Select</option></select><small class="field-error"></small></div>
+                <div class="field"><label for="accountHolder">Account holder</label><input id="accountHolder" name="accountHolder" required maxlength="120" readonly><small class="field-hint">Filled from your legal first name and surname.</small><small class="field-error"></small></div>
+                <div class="field"><label for="accountNumber">Account number</label><input id="accountNumber" name="accountNumber" inputmode="numeric" required minlength="6" maxlength="20"><small class="field-error"></small></div>
+                <input id="branchCode" name="branchCode" type="hidden">
+              </div>
+
+              <div class="document-compliance-note"><strong>Why some financial documents may be requested again</strong><span>Affordability checks need current income evidence. A verified ID can stay on file, but income evidence and bank statements are reused only while recent enough for a new assessment.</span></div>
+              <div class="documents-block">
+                <div class="documents-title"><h3>Supporting documents</h3><p>PDF, JPG or PNG. Maximum 6 MB per file.</p></div>
+
+                <div class="document-block" data-document-block="id_document">
+                  <div class="reuse-document" data-reuse-panel hidden><div><strong>Identity document on file ✓</strong><span data-reuse-text></span></div><button class="btn btn-outline btn-small" type="button" data-upload-new="id_document">Upload newer copy</button></div>
+                  <label class="upload-card" for="idDocument"><span class="upload-icon">ID</span><div><strong>Identity document</strong><small>Clear copy of your South African ID</small><em data-file-name="idDocument">Choose file</em></div><input id="idDocument" name="idDocument" type="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" required></label>
+                </div>
+
+                <div class="document-block" data-document-block="proof_of_income">
+                  <div class="reuse-document" data-reuse-panel hidden><div><strong>Current proof of income on file ✓</strong><span data-reuse-text></span></div><button class="btn btn-outline btn-small" type="button" data-upload-new="proof_of_income">Upload newer proof</button></div>
+                  <label class="upload-card" for="incomeDocument"><span class="upload-icon">R</span><div><strong>Proof of income</strong><small>For salaried applicants, use a single PDF containing the latest 3 payslips where available.</small><em data-file-name="incomeDocument">Choose file</em></div><input id="incomeDocument" name="incomeDocument" type="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" required></label>
+                </div>
+
+                <div class="document-block" data-document-block="bank_statement">
+                  <div class="reuse-document" data-reuse-panel hidden><div><strong>Current bank statement on file ✓</strong><span data-reuse-text></span></div><button class="btn btn-outline btn-small" type="button" data-upload-new="bank_statement">Upload newer statement</button></div>
+                  <label class="upload-card" for="bankStatement"><span class="upload-icon">⇩</span><div><strong>Bank statement</strong><small>Upload the latest 3 months in one PDF where possible, showing income and transactions.</small><em data-file-name="bankStatement">Choose file</em></div><input id="bankStatement" name="bankStatement" type="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" required></label>
+                </div>
+              </div>
+            </section>
+
+            <section class="form-step" data-step="6">
+              <div class="step-heading"><span class="step-kicker">Step 6</span><h2>Review your application</h2><p>Check that everything is correct before submitting it to the lender.</p></div>
+              <div id="reviewSummary" class="review-summary"></div>
+              <div class="consent-box">
+                <label class="check-row"><input type="checkbox" name="accuracyConsent" value="yes" required><span>I confirm that the information I supplied is true and complete to the best of my knowledge.</span></label>
+                <label class="check-row"><input type="checkbox" name="processingConsent" value="yes" required><span>I consent to my information and uploaded documents being used to assess this credit application and handled in line with the lender's Privacy Policy.</span></label>
+                <label class="check-row"><input type="checkbox" name="applicationConsent" value="yes" required><span>I understand that submitting this form is an application only and does not mean that credit has been approved.</span></label>
+                <label class="check-row optional"><input type="checkbox" name="marketingConsent" value="yes"><span>Optional: I would like to receive product news or promotional messages.</span></label>
+              </div>
+              <div class="submission-note">After submission, this application appears in your account immediately. Reused documents remain linked to your existing secure file.</div>
+            </section>
+
+            <div class="form-alert" data-form-alert role="alert" aria-live="polite"></div>
+            <p class="muted" data-submit-requirements hidden>Complete all required details, any documents still needed and the three required confirmations to reveal Submit application.</p>
+            <div class="form-actions"><button class="btn btn-outline" type="button" data-prev disabled>Back</button><button class="btn btn-primary" type="button" data-next>Continue</button><button class="btn btn-primary submit-btn" type="submit" data-submit hidden><span data-submit-label>Submit application</span><span class="button-loader" aria-hidden="true"></span></button></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-site-footer></div>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/supabase-page-bootstrap.js?v=20260904-5" data-page="your application" data-scripts="assets/js/supabase-config.js?v=20260904-5,assets/js/production-hardening.js?v=20260904-5,assets/js/auth-client.js?v=20260904-5,assets/js/client-profile-schema.js?v=20260904-1,assets/js/application.js?v=20260904-5"></script>
+</body>
+</html>

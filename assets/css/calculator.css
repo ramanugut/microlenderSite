@@ -1,0 +1,447 @@
+/* KredRun collection-date loan calculator.
+ * Colours stay connected to assets/css/theme.css.
+ */
+
+.collection-calculator {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 30px;
+  background: rgba(255,255,255,.985);
+}
+
+.collection-calculator:before { display: none; }
+
+.collection-calculator .calculator-topline {
+  padding: 25px 28px 21px;
+}
+
+.calculator-product-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  border: 1px solid rgba(var(--brand-accent-rgb), .22);
+  border-radius: 999px;
+  color: var(--brand-accent-strong);
+  background: var(--surface-success);
+  font-size: .66rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.calculator-product-badge:before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--brand-accent);
+  box-shadow: 0 0 0 4px rgba(var(--brand-accent-rgb), .10);
+}
+
+.loan-control-section {
+  padding: 22px 28px 0;
+}
+
+.loan-control-section + .loan-control-section {
+  margin-top: 2px;
+}
+
+.loan-control-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-end;
+  margin-bottom: 13px;
+}
+
+.loan-control-head > div:first-child { min-width: 0; }
+
+.loan-control-title {
+  display: block;
+  color: var(--brand-navy);
+  font-size: .78rem;
+  font-weight: 900;
+}
+
+.loan-control-help {
+  display: block;
+  margin-top: 2px;
+  color: var(--brand-muted);
+  font-size: .65rem;
+  line-height: 1.35;
+}
+
+.amount-editor {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  min-width: 174px;
+  height: 52px;
+  padding: 0 13px;
+  border: 1px solid rgba(var(--brand-primary-rgb), .16);
+  border-radius: 15px;
+  background: var(--surface-soft);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.8);
+}
+
+.amount-editor:focus-within {
+  border-color: rgba(var(--brand-primary-rgb), .52);
+  box-shadow: 0 0 0 4px rgba(var(--brand-primary-rgb), .08);
+  background: #fff;
+}
+
+.amount-editor span {
+  margin-right: 3px;
+  color: var(--brand-primary-strong);
+  font-size: 1.55rem;
+  font-weight: 900;
+}
+
+.amount-editor input {
+  width: 120px;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  color: var(--brand-navy);
+  background: transparent;
+  font: inherit;
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: -.045em;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.amount-editor input::-webkit-inner-spin-button,
+.amount-editor input::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.wheel-range {
+  --range-progress: 25%;
+  width: 100%;
+  height: 9px;
+  margin: 8px 0 2px;
+  border: 0;
+  border-radius: 999px;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background: linear-gradient(90deg, var(--brand-accent) 0 var(--range-progress), #dce7ef var(--range-progress) 100%);
+}
+
+.wheel-range::-webkit-slider-thumb {
+  width: 26px;
+  height: 26px;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--brand-accent);
+  box-shadow: 0 0 0 1px rgba(var(--brand-accent-rgb), .34), 0 5px 15px rgba(var(--brand-navy-rgb), .18);
+  cursor: grab;
+}
+
+.wheel-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  background: var(--brand-accent);
+  box-shadow: 0 0 0 1px rgba(var(--brand-accent-rgb), .34), 0 5px 15px rgba(var(--brand-navy-rgb), .18);
+  cursor: grab;
+}
+
+.wheel-range:focus-visible {
+  box-shadow: 0 0 0 4px rgba(var(--brand-primary-rgb), .10);
+}
+
+.wheel-range:active::-webkit-slider-thumb { cursor: grabbing; }
+
+.wheel-endpoints,
+.date-wheel-markers {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--brand-muted);
+  font-size: .63rem;
+}
+
+.wheel-endpoints { margin-top: 7px; }
+
+.collection-date-display {
+  flex: 0 0 auto;
+  min-width: 184px;
+  padding: 10px 13px;
+  border: 1px solid rgba(var(--brand-primary-rgb), .12);
+  border-radius: 15px;
+  text-align: right;
+  background: linear-gradient(145deg, #fff, var(--surface-tint));
+}
+
+.collection-date-display strong,
+.collection-date-display span {
+  display: block;
+}
+
+.collection-date-display strong {
+  color: var(--brand-primary-strong);
+  font-size: .95rem;
+  line-height: 1.1;
+}
+
+.collection-date-display span {
+  margin-top: 3px;
+  color: var(--brand-muted);
+  font-size: .64rem;
+  font-weight: 750;
+}
+
+.date-wheel-track {
+  position: relative;
+  margin-top: 4px;
+}
+
+.date-wheel-markers {
+  margin-top: 9px;
+}
+
+.date-wheel-markers span:nth-child(2),
+.date-wheel-markers span:nth-child(3) { text-align: center; }
+.date-wheel-markers span:last-child { text-align: right; }
+
+.price-summary {
+  margin: 23px 28px 0;
+  overflow: hidden;
+  border: 1px solid rgba(var(--brand-primary-rgb), .12);
+  border-radius: 20px;
+  background: linear-gradient(145deg, #f8fcff, #eef7fc);
+}
+
+.price-summary-top {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 18px;
+  align-items: end;
+  padding: 17px 18px 15px;
+  border-bottom: 1px solid rgba(var(--brand-primary-rgb), .10);
+}
+
+.price-summary-top span,
+.price-summary-top small,
+.price-summary-top strong { display: block; }
+
+.price-summary-top span {
+  color: var(--brand-muted);
+  font-size: .66rem;
+  font-weight: 800;
+}
+
+.price-summary-top strong {
+  margin-top: 3px;
+  color: var(--brand-navy);
+  font-size: 1.65rem;
+  line-height: 1;
+  letter-spacing: -.04em;
+}
+
+.price-summary-top small {
+  max-width: 154px;
+  color: var(--brand-muted);
+  text-align: right;
+  font-size: .59rem;
+  line-height: 1.35;
+}
+
+.price-summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.price-summary-item {
+  min-width: 0;
+  padding: 14px 18px;
+}
+
+.price-summary-item + .price-summary-item {
+  border-left: 1px solid rgba(var(--brand-primary-rgb), .10);
+}
+
+.price-summary-item > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--brand-muted);
+  font-size: .64rem;
+  font-weight: 780;
+}
+
+.price-summary-item > strong {
+  display: block;
+  margin-top: 4px;
+  color: var(--brand-primary-strong);
+  font-size: .9rem;
+}
+
+.fee-info-button {
+  width: 20px;
+  height: 20px;
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(var(--brand-primary-rgb), .28);
+  border-radius: 50%;
+  color: var(--brand-primary-strong);
+  background: #fff;
+  font: inherit;
+  font-size: .67rem;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.fee-info-button:hover,
+.fee-info-button:focus-visible {
+  color: #fff;
+  background: var(--brand-primary);
+  border-color: var(--brand-primary);
+  outline: 0;
+}
+
+.collection-calculator .calculator-assurance {
+  margin-top: 14px;
+}
+
+.collection-calculator .calculator-cta {
+  margin-top: 15px;
+}
+
+.collection-calculator .loan-note {
+  margin-bottom: 21px;
+}
+
+.fee-dialog {
+  width: min(calc(100% - 32px), 430px);
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 22px;
+  color: var(--brand-ink);
+  background: #fff;
+  box-shadow: 0 28px 90px rgba(var(--brand-navy-rgb), .28);
+}
+
+.fee-dialog::backdrop {
+  background: rgba(5, 31, 54, .54);
+  backdrop-filter: blur(3px);
+}
+
+.fee-dialog-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  padding: 16px 18px;
+  color: #fff;
+  background: var(--gradient-brand);
+}
+
+.fee-dialog-head strong { font-size: .95rem; }
+
+.fee-dialog-close {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(255,255,255,.24);
+  border-radius: 10px;
+  color: #fff;
+  background: rgba(255,255,255,.10);
+  font: inherit;
+  font-size: 1.15rem;
+  cursor: pointer;
+}
+
+.fee-dialog-total {
+  padding: 14px 18px;
+  color: var(--brand-primary-strong);
+  background: var(--surface-tint);
+  border-bottom: 1px solid var(--brand-line);
+  font-size: .83rem;
+  font-weight: 900;
+}
+
+.fee-breakdown-list {
+  margin: 0;
+  padding: 0 18px;
+}
+
+.fee-breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 22px;
+  align-items: center;
+  min-height: 49px;
+  border-bottom: 1px solid var(--brand-line);
+}
+
+.fee-breakdown-row dt,
+.fee-breakdown-row dd { margin: 0; }
+
+.fee-breakdown-row dt {
+  color: #526b80;
+  font-size: .78rem;
+}
+
+.fee-breakdown-row dd {
+  color: var(--brand-navy);
+  font-size: .8rem;
+  font-weight: 850;
+  text-align: right;
+}
+
+.fee-breakdown-row.total-row dt,
+.fee-breakdown-row.total-row dd {
+  color: var(--brand-primary-strong);
+  font-weight: 900;
+}
+
+.fee-dialog-note {
+  margin: 0;
+  padding: 15px 18px 18px;
+  color: var(--brand-muted);
+  font-size: .64rem;
+  line-height: 1.5;
+}
+
+.fee-dialog-note strong { color: var(--brand-navy); }
+
+@media (max-width: 620px) {
+  .collection-calculator .calculator-topline,
+  .loan-control-section { padding-left: 20px; padding-right: 20px; }
+
+  .loan-control-head {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .amount-editor,
+  .collection-date-display {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .amount-editor input { width: 100%; }
+
+  .collection-date-display { text-align: left; }
+
+  .price-summary { margin-left: 20px; margin-right: 20px; }
+  .price-summary-top { grid-template-columns: 1fr; }
+  .price-summary-top small { max-width: none; text-align: left; }
+  .collection-calculator .calculator-assurance { margin-left: 20px; margin-right: 20px; }
+  .collection-calculator .calculator-cta { width: calc(100% - 40px); margin-left: 20px; margin-right: 20px; }
+  .collection-calculator .loan-note { margin-left: 20px; margin-right: 20px; }
+}

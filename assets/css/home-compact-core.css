@@ -1,0 +1,430 @@
+/* Homepage above-the-fold layout and serious compact calculator.
+ * Loaded after homepage.css and calculator.css so this file only overrides the hero experience.
+ */
+
+.top-strip { display: none; }
+
+@media (min-width: 901px) {
+  .site-header .nav-wrap { min-height: 68px; }
+
+  .hero { padding: 34px 0 40px; }
+
+  .hero-grid {
+    grid-template-columns: .95fr 1.05fr;
+    gap: 46px;
+    align-items: center;
+  }
+
+  .hero-copy .eyebrow {
+    margin-bottom: 11px;
+    font-weight: 700;
+    letter-spacing: .07em;
+  }
+
+  .hero-copy .display {
+    max-width: 630px;
+    font-size: clamp(2.65rem, 4vw, 4.15rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -.035em;
+  }
+
+  .hero-copy .lead {
+    max-width: 610px;
+    margin-top: 15px;
+    font-size: 1rem;
+    line-height: 1.58;
+    letter-spacing: 0;
+  }
+
+  .hero-badges { gap: 8px; margin-top: 18px; }
+
+  .hero-badges .pill {
+    padding: 7px 10px;
+    font-size: .76rem;
+    font-weight: 650;
+    letter-spacing: .005em;
+  }
+
+  .hero-life-card {
+    grid-template-columns: 118px 1fr;
+    max-width: 525px;
+    min-height: 92px;
+    margin-top: 19px;
+    border-radius: 17px;
+  }
+
+  .hero-life-card img { min-height: 92px; height: 92px; }
+
+  .hero-life-card figcaption {
+    gap: 4px;
+    padding: 13px 15px;
+  }
+
+  .hero-life-card figcaption strong {
+    font-size: .85rem;
+    font-weight: 750;
+    letter-spacing: 0;
+  }
+
+  .hero-life-card figcaption span {
+    font-size: .71rem;
+    line-height: 1.46;
+    letter-spacing: 0;
+  }
+}
+
+/* Calculator shell */
+.compact-loan-calculator {
+  overflow: hidden;
+  border: 1px solid rgba(5,57,99,.10);
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 24px 64px rgba(5,57,99,.16);
+}
+
+.compact-calc-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 60px;
+  padding: 0 22px;
+  border-bottom: 1px solid #e8eef3;
+  background: #fff;
+}
+
+.compact-calc-head span {
+  color: var(--brand-navy);
+  font-size: .96rem;
+  font-weight: 800;
+  letter-spacing: -.01em;
+}
+
+.compact-calc-head strong {
+  padding: 6px 9px;
+  border-radius: 999px;
+  color: #567087;
+  background: #f3f7fa;
+  font-size: .64rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+/* Controls */
+.compact-control {
+  padding: 18px 22px 0;
+}
+
+.compact-control + .compact-control {
+  padding-top: 17px;
+}
+
+.compact-control-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 11px;
+}
+
+.compact-control-row > span,
+.compact-control-row > label:first-child {
+  color: #526b80;
+  font-size: .72rem;
+  font-weight: 750;
+  letter-spacing: 0;
+}
+
+/* Amount should be the visual focus, not a form box. */
+.compact-amount-editor {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  min-width: 154px;
+  height: auto;
+  padding: 0 2px 0 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.compact-amount-editor:focus-within {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.compact-amount-editor span {
+  margin-right: 6px;
+  color: var(--brand-navy);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.compact-amount-editor input {
+  width: 116px;
+  padding: 0 7px 0 0;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  outline: 0;
+  color: var(--brand-navy);
+  background: transparent;
+  font: inherit;
+  font-size: 1.85rem;
+  font-weight: 850;
+  line-height: 1.08;
+  letter-spacing: -.035em;
+  text-align: right;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.compact-amount-editor:focus-within input {
+  border-bottom-color: rgba(var(--brand-primary-rgb), .32);
+}
+
+.compact-amount-editor input::-webkit-inner-spin-button,
+.compact-amount-editor input::-webkit-outer-spin-button { -webkit-appearance: none; }
+
+.compact-date-value {
+  padding: 6px 10px;
+  border-radius: 9px;
+  color: var(--brand-navy);
+  background: #f3f7fa;
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+/* Keep the wheels quiet and on-brand. */
+.compact-loan-calculator .wheel-range {
+  height: 6px;
+  margin: 4px 0 0;
+  background: linear-gradient(90deg, var(--brand-primary) 0 var(--range-progress), #dfe7ee var(--range-progress) 100%);
+}
+
+.compact-loan-calculator .wheel-range::-webkit-slider-thumb {
+  width: 20px;
+  height: 20px;
+  border: 4px solid #fff;
+  background: var(--brand-primary);
+  box-shadow: 0 0 0 1px rgba(var(--brand-primary-rgb),.25), 0 3px 10px rgba(5,57,99,.16);
+}
+
+.compact-loan-calculator .wheel-range::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: 4px solid #fff;
+  background: var(--brand-primary);
+  box-shadow: 0 0 0 1px rgba(var(--brand-primary-rgb),.25), 0 3px 10px rgba(5,57,99,.16);
+}
+
+.compact-range-ends {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  color: #7b8d9c;
+  font-size: .59rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+/* Repayment is the second-strongest element. Fees are supporting detail. */
+.compact-result {
+  display: grid;
+  grid-template-columns: 1.35fr .65fr;
+  align-items: stretch;
+  margin: 17px 22px 0;
+  overflow: hidden;
+  border: 1px solid #e3ebf1;
+  border-radius: 13px;
+  background: #f7fafc;
+}
+
+.compact-result > div,
+.compact-fees-button {
+  min-width: 0;
+  padding: 12px 14px;
+}
+
+.compact-result > div {
+  border-right: 1px solid #e3ebf1;
+}
+
+.compact-result span,
+.compact-result strong { display: block; }
+
+.compact-result span {
+  color: #70869a;
+  font-size: .61rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+
+.compact-result > div strong {
+  margin-top: 3px;
+  color: var(--brand-navy);
+  font-size: 1.32rem;
+  font-weight: 850;
+  line-height: 1.05;
+  letter-spacing: -.025em;
+}
+
+.compact-fees-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 0;
+  text-align: left;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+
+.compact-fees-button span {
+  color: var(--brand-primary-strong);
+  font-size: .60rem;
+}
+
+.compact-fees-button strong {
+  margin-top: 3px;
+  color: #415d74;
+  font-size: .84rem;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.compact-fees-button:hover,
+.compact-fees-button:focus-visible {
+  background: #eef5fa;
+  outline: 0;
+}
+
+/* One confident action. */
+.compact-loan-calculator .calculator-cta {
+  width: calc(100% - 44px);
+  min-height: 48px;
+  margin: 13px 22px 19px;
+  border: 0;
+  border-radius: 11px;
+  color: #fff;
+  background: var(--brand-primary);
+  box-shadow: 0 10px 22px rgba(var(--brand-primary-rgb), .22);
+  font-size: .91rem;
+  font-weight: 800;
+  letter-spacing: -.005em;
+}
+
+.compact-loan-calculator .calculator-cta:hover {
+  background: var(--brand-primary-strong);
+  box-shadow: 0 12px 26px rgba(var(--brand-primary-rgb), .28);
+}
+
+/* Mobile is calculator-first. Do not make a borrower read the desktop sales hero first. */
+@media (max-width: 900px) {
+  .hero {
+    padding: 10px 0 22px;
+    min-height: 0;
+  }
+
+  .hero .container.hero-grid {
+    width: min(calc(100% - 16px), 620px);
+  }
+
+  .hero-grid {
+    display: block;
+  }
+
+  .hero-copy {
+    display: none;
+  }
+
+  .compact-loan-calculator {
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 17px;
+    box-shadow: 0 14px 34px rgba(5,57,99,.14);
+  }
+
+  .compact-calc-head,
+  .compact-control {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .compact-result {
+    margin-left: 18px;
+    margin-right: 18px;
+  }
+
+  .compact-loan-calculator .calculator-cta {
+    width: calc(100% - 36px);
+    margin-left: 18px;
+    margin-right: 18px;
+  }
+
+  .section-tight {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero { padding-top: 8px; padding-bottom: 16px; }
+
+  .compact-calc-head {
+    min-height: 54px;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .compact-calc-head strong {
+    max-width: 132px;
+    padding: 5px 7px;
+    white-space: normal;
+    text-align: right;
+    line-height: 1.25;
+  }
+
+  .compact-control {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .compact-control-row { gap: 10px; }
+
+  .compact-amount-editor {
+    min-width: 134px;
+    padding-right: 1px;
+  }
+
+  .compact-amount-editor input {
+    width: 102px;
+    padding-right: 5px;
+    font-size: 1.65rem;
+    line-height: 1.08;
+  }
+
+  .compact-result {
+    grid-template-columns: 1.2fr .8fr;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .compact-result > div,
+  .compact-fees-button {
+    padding: 11px 12px;
+  }
+
+  .compact-result > div strong { font-size: 1.18rem; }
+
+  .compact-loan-calculator .calculator-cta {
+    width: calc(100% - 30px);
+    min-height: 50px;
+    margin: 12px 15px 15px;
+  }
+}

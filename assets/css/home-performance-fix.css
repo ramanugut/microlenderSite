@@ -1,0 +1,29 @@
+/* Homepage performance hardening: avoid GPU-heavy effects on large images. */
+.home-clean .section{content-visibility:auto;contain-intrinsic-size:700px}
+.home-clean .benefit-card{contain:layout paint;isolation:isolate}
+.home-clean .benefit-card img{
+  mask-image:none !important;
+  -webkit-mask-image:none !important;
+  transform:none !important;
+  filter:none !important;
+  opacity:.78;
+  height:178px;
+  object-fit:cover;
+}
+.home-clean .benefit-card::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:0;
+  height:190px;
+  pointer-events:none;
+  background:linear-gradient(to bottom,rgba(255,255,255,.92) 0%,rgba(255,255,255,.18) 32%,rgba(255,255,255,0) 62%);
+  z-index:1;
+}
+.home-clean .benefit-card h3,.home-clean .benefit-card p{z-index:2}
+.home-clean .clean-hero-overlay{backdrop-filter:none !important;-webkit-backdrop-filter:none !important;background:rgba(7,29,54,.84)}
+.home-clean .safety-strip,.home-clean .faq-shell{backdrop-filter:none !important;-webkit-backdrop-filter:none !important}
+.home-clean .clean-hero-visual,.home-clean .final-image{contain:layout paint}
+@media(max-width:640px){
+  .home-clean .section{contain-intrinsic-size:620px}
+  .home-clean .benefit-card img{height:165px}
+}

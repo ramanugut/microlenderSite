@@ -1,0 +1,123 @@
+/*
+ * KredRun shared design system
+ * ------------------------------------------------------------
+ * Shared visual language for website, client portal and lender admin.
+ * Brand values come from assets/js/brand-config.js.
+ */
+@import url("mfa-security-polish.css");
+
+:root{
+  --brand-primary:#0876d8;
+  --brand-primary-strong:#0558ad;
+  --brand-secondary:#18b5d6;
+  --brand-accent:#56c51f;
+  --brand-accent-strong:#38a814;
+  --brand-navy:#053963;
+  --brand-ink:#0c2947;
+  --brand-background:#f3f8fc;
+  --brand-surface:#fff;
+  --brand-muted:#668098;
+  --brand-line:#d9e6f0;
+  --brand-danger:#c6424f;
+  --brand-warning:#d8891d;
+  --brand-success:#22955f;
+  --brand-primary-rgb:8,118,216;
+  --brand-accent-rgb:86,197,31;
+  --brand-navy-rgb:5,57,99;
+
+  --ink:var(--brand-ink);
+  --muted:var(--brand-muted);
+  --blue:var(--brand-primary);
+  --blue-dark:var(--brand-primary-strong);
+  --aqua:var(--brand-secondary);
+  --navy:var(--brand-navy);
+  --navy-2:#031d39;
+  --cloud:var(--brand-background);
+  --line:var(--brand-line);
+  --surface:var(--brand-surface);
+  --canvas:var(--brand-background);
+  --success:var(--brand-success);
+  --orange:var(--brand-warning);
+  --green:var(--brand-success);
+  --red:var(--brand-danger);
+
+  --ds-radius-xs:8px;
+  --ds-radius-sm:10px;
+  --ds-radius-md:12px;
+  --ds-radius-lg:18px;
+  --ds-radius-xl:22px;
+  --radius:var(--ds-radius-md);
+  --shadow:0 8px 28px rgba(var(--brand-navy-rgb),.08);
+  --ds-shadow-sm:0 4px 18px rgba(var(--brand-navy-rgb),.07);
+  --ds-shadow-md:0 12px 34px rgba(var(--brand-navy-rgb),.10);
+  --ds-focus:0 0 0 3px rgba(var(--brand-primary-rgb),.16);
+  --ds-gradient-brand:linear-gradient(125deg,var(--brand-primary-strong),var(--brand-primary) 56%,var(--brand-secondary));
+  --ds-gradient-accent:linear-gradient(135deg,var(--brand-accent),var(--brand-accent-strong));
+}
+
+html{font-family:Manrope,Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body,button,input,select,textarea{font-family:Manrope,Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+
+/* Shared focus and control behaviour */
+a,button,input,select,textarea{outline:none}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{box-shadow:var(--ds-focus);outline:2px solid transparent}
+input,select,textarea{border-color:var(--brand-line)}
+input:focus,select:focus,textarea:focus{border-color:var(--brand-primary)}
+
+/* Shared buttons. Marketing pages may use larger spacing, but the shape and colour language stay the same. */
+.btn,.primary-button,.secondary-button,.orange-button,.row-action,.text-button,.account-logout-button,.account-apply-button{
+  border-radius:var(--ds-radius-sm);
+  font-weight:700;
+}
+.btn,.primary-button,.secondary-button,.orange-button{min-height:44px}
+.btn-primary,.primary-button{background:var(--brand-primary);color:#fff;border-color:var(--brand-primary);box-shadow:0 5px 14px rgba(var(--brand-primary-rgb),.18)}
+.btn-primary:hover,.primary-button:hover{background:var(--brand-primary-strong);border-color:var(--brand-primary-strong)}
+.btn-outline,.secondary-button{background:#fff;color:var(--brand-navy);border:1px solid var(--brand-line)}
+.btn-outline:hover,.secondary-button:hover{color:var(--brand-primary-strong);border-color:var(--brand-primary)}
+.orange-button{background:var(--brand-warning);color:#fff}
+
+/* Shared surfaces */
+.card,.panel,.portal-panel,.summary-card,.loan-card,.application-focus-card,.metric-card,.list-toolbar,.document-card,.auth-card,.received-card{
+  border-color:var(--brand-line);
+  box-shadow:var(--ds-shadow-sm);
+}
+.panel,.portal-panel,.summary-card,.metric-card,.list-toolbar,.document-card,.auth-card,.received-card{border-radius:var(--ds-radius-md)}
+
+/* Shared status colours */
+.status-approved,.status-active,.status-paid,.status-verified,.status-complete,.status-success{background:#e9f6e5!important;color:#2f7e22!important}
+.status-under_review,.status-pending,.status-scheduled,.status-ready,.status-warning{background:#fff1de!important;color:#a95d0b!important}
+.status-declined,.status-overdue,.status-rejected,.status-failed,.status-written_off,.status-danger{background:#ffe7e9!important;color:#b62f3a!important}
+.status-received,.status-needs_review,.status-info{background:#e7f3fd!important;color:var(--brand-primary-strong)!important}
+
+/* Shared brand marks */
+.brand-mark,.admin-brand>span,.loading-mark,.account-boot-mark{
+  background:var(--ds-gradient-brand)!important;
+  color:#fff;
+}
+.brand-mark img,.admin-brand>span img,.loading-mark img,.account-boot-mark img{width:100%;height:100%;object-fit:contain;border-radius:inherit}
+
+/* Admin inherits the same tenant colours while keeping the compact layout the user likes. */
+.admin-page{background:var(--brand-background);color:var(--brand-ink)}
+.admin-sidebar{background:linear-gradient(180deg,#031d39,var(--brand-navy))}
+.admin-nav button.active{background:var(--brand-primary)}
+.admin-brand{letter-spacing:-.025em}
+.admin-brand>span{border-radius:var(--ds-radius-sm)}
+.admin-topbar,.panel,.metric-card,.list-toolbar{border-color:var(--brand-line)}
+
+/* Client portal keeps its richer borrower-friendly command bar, but now uses the shared tokens. */
+.account-command-bar{background:var(--ds-gradient-brand)!important;border-radius:var(--ds-radius-lg)!important;box-shadow:var(--ds-shadow-md)!important}
+.account-command-bar .portal-tabs{border-radius:var(--ds-radius-md)!important}
+.account-command-bar .portal-tabs button{border-radius:var(--ds-radius-sm)!important}
+.portal-action-card{border-radius:var(--ds-radius-lg)!important}
+.portal-action-icon{border-radius:var(--ds-radius-md)!important}
+.account-command-actions .account-apply-button{border-radius:var(--ds-radius-sm)!important}
+
+/* Public site: same design DNA, with more breathing room for marketing. */
+.site-header{border-color:var(--brand-line)}
+.brand-mark{border-radius:var(--ds-radius-sm)}
+.site-header .btn,.clean-actions .btn,.calculator-cta{border-radius:var(--ds-radius-sm)!important}
+.loan-card{border-radius:var(--ds-radius-lg)}
+
+@media(max-width:720px){
+  .btn,.primary-button,.secondary-button,.orange-button{min-height:46px}
+}

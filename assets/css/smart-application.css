@@ -1,0 +1,271 @@
+/* Smart application: compact, progressive and low-scroll. */
+
+.application-page.auth-checking .application-shell{visibility:hidden}
+.application-page.smart-application .application-intro{display:none}
+.application-page.smart-application .application-main{padding:16px 0 44px}
+.application-page.smart-application .application-layout{display:grid;grid-template-columns:1fr;gap:12px;max-width:1040px;margin-left:auto;margin-right:auto}
+.application-page.smart-application .application-sidebar{position:sticky;top:72px;z-index:18}
+.application-page.smart-application .sidebar-help{display:none}
+
+.application-page.smart-application .progress-card{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto;
+  align-items:center;
+  gap:14px;
+  padding:9px 12px;
+  border-radius:16px;
+  box-shadow:0 10px 28px rgba(5,57,99,.07);
+}
+.application-page.smart-application .progress-head{display:block;white-space:nowrap}
+.application-page.smart-application .progress-head>span{display:none}
+.application-page.smart-application .progress-head strong{font-size:.78rem}
+.application-page.smart-application .progress-track{display:none}
+.application-page.smart-application .step-list{display:flex;gap:5px;min-width:0;overflow-x:auto;scrollbar-width:none}
+.application-page.smart-application .step-list::-webkit-scrollbar{display:none}
+.application-page.smart-application .step-list li{
+  display:flex;
+  grid-template-columns:none;
+  flex:0 0 auto;
+  gap:6px;
+  align-items:center;
+  min-width:0;
+  padding:6px 8px;
+  border-radius:10px;
+}
+.application-page.smart-application .step-list li>span{width:24px;height:24px;font-size:.68rem}
+.application-page.smart-application .step-list li strong{font-size:.73rem}
+.application-page.smart-application .step-list li small{display:none}
+.application-page.smart-application .step-list li.active{background:var(--surface-tint)}
+.application-page.smart-application .step-list li.done strong{display:none}
+.application-page.smart-application .step-list li.done{padding-right:4px}
+
+.smart-plan-chip{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  min-height:36px;
+  padding:0 10px;
+  border:1px solid rgba(var(--brand-primary-rgb),.13);
+  border-radius:11px;
+  background:#fff;
+  color:var(--brand-navy);
+  font:inherit;
+  white-space:nowrap;
+}
+.smart-plan-chip span{color:var(--brand-muted);font-size:.65rem;font-weight:700}
+.smart-plan-chip strong{font-size:.73rem}
+.smart-plan-chip em{color:var(--brand-primary-strong);font-size:.67rem;font-style:normal;font-weight:800}
+
+.application-page.smart-application .application-content form{
+  width:100%;
+  max-width:980px;
+  margin:0 auto;
+  padding:22px 24px 24px;
+  border-radius:20px;
+  box-shadow:0 14px 38px rgba(5,57,99,.065);
+}
+.application-page.smart-application .step-heading{margin-bottom:17px}
+.application-page.smart-application .step-kicker{margin-bottom:4px;font-size:.68rem}
+.application-page.smart-application .step-heading h2{font-size:clamp(1.35rem,2.5vw,1.9rem);line-height:1.12;letter-spacing:-.025em}
+.application-page.smart-application .step-heading p{max-width:700px;margin-top:6px;font-size:.82rem;line-height:1.45}
+
+.application-page.smart-application .form-grid{gap:11px 12px}
+.application-page.smart-application .field label{margin-bottom:5px;font-size:.75rem}
+.application-page.smart-application .field input:not([type=range]):not([type=checkbox]),
+.application-page.smart-application .field select,
+.application-page.smart-application .field textarea{height:44px;border-radius:11px;padding-left:12px;padding-right:12px;font-size:.88rem}
+.application-page.smart-application .money-field input:not([type=range]){padding-left:44px!important}
+.application-page.smart-application .money-prefix{left:13px;top:31px;width:20px;text-align:center;font-size:.82rem;line-height:44px;pointer-events:none}
+.application-page.smart-application .field-error{min-height:11px;margin-top:2px;font-size:.65rem}
+.application-page.smart-application .field-hint{font-size:.68rem}
+
+.application-page.smart-application .prefill-note{
+  gap:.45rem;
+  margin-bottom:10px;
+  padding:8px 10px;
+  border-radius:10px;
+  font-size:.73rem;
+}
+.application-page.smart-application .prefill-note span{line-height:1.4}
+
+.smart-identity-summary{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:12px;
+  padding:11px 13px;
+  border:1px solid #cfe8df;
+  border-radius:12px;
+  background:#f3fbf8;
+}
+.smart-identity-summary>div{display:grid;gap:1px}
+.smart-identity-summary span{color:#55766a;font-size:.66rem;font-weight:750;text-transform:uppercase;letter-spacing:.04em}
+.smart-identity-summary strong{color:#17463a;font-size:.88rem}
+.smart-identity-summary small{color:#5f756e;font-size:.7rem}
+.smart-identity-summary button{border:0;background:transparent;color:var(--brand-primary-strong);font:inherit;font-size:.72rem;font-weight:850;cursor:pointer}
+.form-step.identity-collapsed:not(.show-identity-fields) .smart-identity-field{display:none!important}
+
+.application-page.smart-application .choice-panel{padding:18px;border-radius:16px}
+.application-page.smart-application .amount-display{padding-bottom:14px;margin-bottom:14px}
+.application-page.smart-application .amount-display strong{font-size:1.75rem}
+.application-page.smart-application .term-header{margin-top:16px}
+.application-page.smart-application .soft-notice{margin-top:14px;padding:10px 12px;border-radius:11px;font-size:.72rem}
+
+.application-page.smart-application .affordability-summary{
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:8px;
+  margin-bottom:13px;
+}
+.application-page.smart-application .affordability-summary>div{padding:10px 11px;border-radius:11px}
+.application-page.smart-application .affordability-summary span{font-size:.65rem}
+.application-page.smart-application .affordability-summary strong{margin-top:2px;font-size:.95rem}
+
+@media(min-width:900px){
+  .application-page.smart-application .affordability-fields{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+
+.application-page.smart-application .document-compliance-note{
+  display:block;
+  margin:10px 0;
+  padding:9px 11px;
+  border-radius:10px;
+  font-size:.7rem;
+}
+.application-page.smart-application .document-compliance-note strong{display:inline;margin-right:5px}
+.application-page.smart-application .document-compliance-note span{display:inline;line-height:1.4}
+.application-page.smart-application .documents-block{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+  margin-top:14px;
+  padding-top:14px;
+}
+.application-page.smart-application .documents-title{grid-column:1/-1;margin-bottom:0}
+.application-page.smart-application .documents-title h3{font-size:1rem}
+.application-page.smart-application .document-block{min-width:0;margin:0}
+.application-page.smart-application .upload-card{
+  min-height:110px;
+  align-items:flex-start;
+  margin:0;
+  padding:12px;
+  border-radius:12px;
+}
+.application-page.smart-application .upload-icon{width:36px;height:36px;border-radius:10px;font-size:.76rem}
+.application-page.smart-application .upload-card strong{font-size:.78rem}
+.application-page.smart-application .upload-card small{font-size:.66rem;line-height:1.35}
+.application-page.smart-application .upload-card em{font-size:.66rem}
+.application-page.smart-application .reuse-document{height:100%;align-items:flex-start;flex-direction:column;padding:11px;border-radius:12px;font-size:.73rem}
+.application-page.smart-application .reuse-document span{font-size:.68rem;line-height:1.35}
+.application-page.smart-application .btn-small{width:100%;padding:.45rem .6rem!important;font-size:.68rem}
+
+.application-page.smart-application .review-summary{gap:8px}
+.application-page.smart-application .review-section{border-radius:12px}
+.application-page.smart-application .review-section-head{padding:9px 11px}
+.application-page.smart-application .review-item{padding:7px 11px}
+.application-page.smart-application .review-item span{font-size:.63rem}
+.application-page.smart-application .review-item strong{font-size:.75rem}
+.application-page.smart-application .consent-box{gap:8px;margin-top:12px;padding:12px;border-radius:12px}
+.application-page.smart-application .check-row{font-size:.72rem;line-height:1.4}
+.application-page.smart-application .submission-note{margin-top:9px;font-size:.68rem}
+
+.application-page.smart-application .form-actions{
+  position:sticky;
+  bottom:10px;
+  z-index:20;
+  margin:20px -8px 0;
+  padding:10px;
+  border:1px solid rgba(var(--brand-primary-rgb),.10);
+  border-radius:15px;
+  background:rgba(255,255,255,.96);
+  box-shadow:0 12px 34px rgba(5,57,99,.13);
+  backdrop-filter:blur(14px);
+}
+.application-page.smart-application .form-actions .btn{min-width:110px;min-height:44px;border-radius:11px}
+.application-page.smart-application [data-submit-requirements]{margin:10px 0 0;font-size:.68rem}
+.application-page.smart-application [data-next][hidden]{display:none!important}
+
+/* Keep Submit visible but clearly unavailable until review + every required item is complete. */
+.application-page.smart-application [data-submit]{display:inline-flex!important;opacity:.32;pointer-events:none;filter:grayscale(.55);box-shadow:none}
+.application-page.smart-application #loanApplication:has([data-step="6"].active):valid [data-submit]{opacity:1;pointer-events:auto;filter:none;box-shadow:var(--shadow-accent)}
+
+/* Continue should not look actionable while the visible step still has required information missing. */
+.application-page.smart-application #loanApplication:has(.form-step.active input:invalid) [data-next],
+.application-page.smart-application #loanApplication:has(.form-step.active select:invalid) [data-next],
+.application-page.smart-application #loanApplication:has(.form-step.active textarea:invalid) [data-next]{opacity:.34;pointer-events:none;filter:grayscale(.45);box-shadow:none}
+
+.application-page.smart-application .application-auth-gate{display:none!important}
+.field[hidden],.reuse-document[hidden],.upload-card[hidden],.prefill-note[hidden]{display:none!important}
+
+/* Desktop keeps the compact workspace feel, but the page itself must always be able to scroll. */
+@media(min-width:901px) and (min-height:680px){
+  .application-page.smart-application{overflow:auto}
+  .application-page.smart-application .site-footer{display:none}
+  .application-page.smart-application .application-main{
+    min-height:calc(100vh - 69px);
+    height:auto;
+    padding:10px 0 28px;
+    overflow:visible;
+  }
+  .application-page.smart-application .application-layout{
+    height:auto;
+    min-height:0;
+    grid-template-rows:auto auto;
+  }
+  .application-page.smart-application .application-sidebar{position:sticky;top:72px}
+  .application-page.smart-application .application-content{min-height:0;overflow:visible}
+  .application-page.smart-application .application-content form{
+    position:relative;
+    height:auto;
+    min-height:0;
+    display:block;
+    padding:18px 22px 20px;
+    overflow:visible;
+  }
+  .application-page.smart-application .form-step.active{
+    min-height:0;
+    overflow:visible;
+    padding-right:0;
+  }
+  .application-page.smart-application .step-heading{margin-bottom:13px}
+  .application-page.smart-application .step-heading p{margin-top:4px}
+  .application-page.smart-application .form-actions{position:sticky;left:auto;right:auto;bottom:12px;margin:18px -8px 0}
+  .application-page.smart-application .review-summary{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:start;
+  }
+  .application-page.smart-application .review-section:first-child{grid-column:1/-1}
+  .application-page.smart-application .review-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media(max-width:900px){
+  .application-page.smart-application .application-sidebar{top:66px}
+  .application-page.smart-application .progress-card{grid-template-columns:auto minmax(0,1fr);gap:8px}
+  .smart-plan-chip{grid-column:1/-1;justify-content:center;min-height:32px}
+  .application-page.smart-application .documents-block{grid-template-columns:1fr}
+  .application-page.smart-application .documents-title{grid-column:auto}
+}
+
+@media(max-width:720px){
+  .application-page.smart-application .application-main{padding-top:8px}
+  .application-page.smart-application .application-layout{width:min(calc(100% - 20px),1040px)}
+  .application-page.smart-application .application-sidebar{top:60px}
+  .application-page.smart-application .progress-card{padding:7px 8px;border-radius:13px}
+  .application-page.smart-application .progress-head strong{font-size:.68rem}
+  .application-page.smart-application .step-list li{padding:5px}
+  .application-page.smart-application .step-list li strong{display:none}
+  .application-page.smart-application .step-list li.active strong{display:block;font-size:.68rem}
+  .application-page.smart-application .application-content form{padding:17px 14px 20px;border-radius:16px}
+  .application-page.smart-application .form-grid.two{grid-template-columns:1fr 1fr}
+  .application-page.smart-application .affordability-summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .application-page.smart-application .form-actions{bottom:6px;margin-left:-4px;margin-right:-4px}
+}
+
+@media(max-width:520px){
+  .application-page.smart-application .form-grid.two{grid-template-columns:1fr}
+  .application-page.smart-application .affordability-summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .smart-identity-summary{align-items:flex-start}
+  .smart-identity-summary small{line-height:1.35}
+  .application-page.smart-application .form-actions .btn{min-width:0;flex:1}
+}

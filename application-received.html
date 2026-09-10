@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Application sent | KredRun</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/application.css">
+</head>
+<body class="application-page received-body">
+  <div data-site-header></div>
+  <main class="received-page">
+    <div class="container">
+      <section class="received-card">
+        <div class="received-icon">✓</div>
+        <h1>Application sent</h1>
+        <p>We have your application. You can follow its status from your account.</p>
+        <div class="reference-box"><span>Reference</span><strong id="applicationReference">Pending</strong></div>
+        <div class="received-actions"><a class="btn btn-primary" href="account.html">View my application</a><a class="btn btn-outline" href="index.html">Home</a></div>
+      </section>
+    </div>
+  </main>
+  <div data-site-footer></div>
+  <script src="assets/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase-config.js"></script>
+  <script src="assets/js/supabase-page-bootstrap.js"></script>
+  <script>
+    (()=>{
+      const ref=new URLSearchParams(location.search).get('ref');
+      const el=document.getElementById('applicationReference');el.textContent=ref||'Sent successfully';
+      async function kick(){
+        const client=window.kredrunSupabase;if(!client)return;
+        const {data}=await client.auth.getSession();const token=data?.session?.access_token;if(!token)return;
+        fetch('/api/lifecycle',{method:'POST',headers:{Authorization:`Bearer ${token}`},keepalive:true}).catch(()=>{});
+      }
+      window.addEventListener('kredrun:supabase-ready',kick,{once:true});
+      if(window.kredrunSupabase)setTimeout(kick,0);
+    })();
+  </script>
+</body>
+</html>

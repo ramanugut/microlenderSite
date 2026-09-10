@@ -1,0 +1,176 @@
+/* Customer portal polish: compact command bar + quick actions. */
+
+/* The customer is already signed in, so do not repeat login/apply in the global header. */
+.account-page .nav-actions > a[href="login.html"],
+.account-page .nav-actions .js-apply { display:none; }
+
+.account-page .account-shell { padding-top:28px; }
+
+.account-command-bar {
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto;
+  align-items:center;
+  gap:22px;
+  margin-bottom:24px;
+  padding:16px 18px;
+  border-radius:22px;
+  color:#fff;
+  background:linear-gradient(110deg,var(--brand-primary-strong,#0558ad),var(--brand-primary,#0876d8),var(--brand-secondary,#18b5d6));
+  box-shadow:0 18px 42px rgba(5,57,99,.16);
+}
+
+.account-command-greeting { min-width:150px; }
+.account-command-greeting > span {
+  display:block;
+  margin-bottom:2px;
+  color:rgba(255,255,255,.72);
+  font-size:.66rem;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.account-command-greeting h1 {
+  margin:0;
+  color:#fff;
+  font-size:1.45rem;
+  line-height:1.1;
+  letter-spacing:-.025em;
+  font-weight:650;
+}
+.account-command-greeting h1 strong { font-weight:850; }
+
+.account-command-bar .portal-tabs {
+  min-width:0;
+  display:flex;
+  gap:5px;
+  margin:0;
+  padding:5px;
+  overflow:auto;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:14px;
+  background:rgba(255,255,255,.09);
+  scrollbar-width:none;
+}
+.account-command-bar .portal-tabs::-webkit-scrollbar { display:none; }
+.account-command-bar .portal-tabs button {
+  flex:0 0 auto;
+  padding:9px 13px;
+  border:0;
+  border-radius:10px;
+  color:rgba(255,255,255,.78);
+  background:transparent;
+  font-size:.82rem;
+  font-weight:750;
+}
+.account-command-bar .portal-tabs button:hover { color:#fff;background:rgba(255,255,255,.10); }
+.account-command-bar .portal-tabs button.active {
+  color:var(--brand-primary-strong,#0558ad);
+  background:#fff;
+  box-shadow:0 5px 14px rgba(5,57,99,.10);
+}
+
+.account-command-actions {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  white-space:nowrap;
+}
+.account-command-actions .account-apply-button {
+  min-height:40px;
+  padding:0 15px;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:11px;
+  color:#fff;
+  background:rgba(255,255,255,.16);
+  box-shadow:none;
+  font-size:.78rem;
+}
+.account-command-actions .account-apply-button:hover { background:rgba(255,255,255,.24); }
+.account-logout-button {
+  min-height:40px;
+  padding:0 12px;
+  border:0;
+  color:rgba(255,255,255,.78);
+  background:transparent;
+  font:inherit;
+  font-size:.76rem;
+  font-weight:750;
+  cursor:pointer;
+}
+.account-logout-button:hover { color:#fff; }
+
+.portal-summary { margin-top:0; }
+
+.portal-shortcuts { margin-top:18px; }
+.portal-shortcuts .portal-panel-head { margin-bottom:16px; }
+.portal-shortcuts .portal-panel-head h2 { font-size:1.35rem;letter-spacing:-.02em; }
+
+.portal-action-grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px; }
+.portal-action-card {
+  position:relative;
+  min-width:0;
+  min-height:132px;
+  display:grid;
+  grid-template-columns:50px 1fr auto;
+  gap:14px;
+  align-items:center;
+  padding:20px;
+  overflow:hidden;
+  border:1px solid transparent;
+  border-radius:20px;
+  text-align:left;
+  color:var(--brand-navy,#073f5a);
+  font:inherit;
+  cursor:pointer;
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+.portal-action-card::after {
+  content:"";
+  position:absolute;
+  width:110px;height:110px;top:-55px;right:-42px;
+  border-radius:50%;background:rgba(255,255,255,.42);pointer-events:none;
+}
+.action-applications { background:linear-gradient(145deg,rgba(var(--brand-primary-rgb,8,118,216),.15),rgba(var(--brand-primary-rgb,8,118,216),.06));border-color:rgba(var(--brand-primary-rgb,8,118,216),.17); }
+.action-loans { background:linear-gradient(145deg,rgba(var(--brand-accent-rgb,86,197,31),.18),rgba(var(--brand-accent-rgb,86,197,31),.06));border-color:rgba(var(--brand-accent-rgb,86,197,31),.20); }
+.action-details { background:linear-gradient(145deg,rgba(24,181,214,.18),rgba(24,181,214,.06));border-color:rgba(24,181,214,.20); }
+.portal-action-icon { width:50px;height:50px;display:grid;place-items:center;border-radius:16px;color:#fff;font-size:1rem;font-weight:800;box-shadow:0 10px 24px rgba(5,57,99,.12); }
+.action-applications .portal-action-icon { background:var(--brand-primary,#0876d8); }
+.action-loans .portal-action-icon { background:var(--brand-accent-strong,#38a814); }
+.action-details .portal-action-icon { background:var(--brand-secondary,#18b5d6); }
+.portal-action-copy { min-width:0;display:grid;gap:4px; }
+.portal-action-copy strong { color:var(--brand-navy,#073f5a);font-size:1.08rem;line-height:1.2;font-weight:760; }
+.portal-action-copy small { color:var(--brand-muted,#668098);font-size:.78rem;font-weight:620; }
+.portal-action-arrow { position:relative;z-index:1;width:34px;height:34px;display:grid;place-items:center;border-radius:12px;color:var(--brand-navy,#073f5a);background:rgba(255,255,255,.72);font-size:1.05rem;font-weight:800; }
+.portal-action-card:hover,.portal-action-card:focus-visible { transform:translateY(-3px);box-shadow:0 16px 34px rgba(5,57,99,.10);outline:none; }
+.action-applications:hover,.action-applications:focus-visible { border-color:rgba(var(--brand-primary-rgb,8,118,216),.34); }
+.action-loans:hover,.action-loans:focus-visible { border-color:rgba(var(--brand-accent-rgb,86,197,31),.38); }
+.action-details:hover,.action-details:focus-visible { border-color:rgba(24,181,214,.38); }
+
+@media(max-width:1050px){
+  .account-command-bar { grid-template-columns:auto minmax(0,1fr); }
+  .account-command-actions { grid-column:1/-1;justify-content:flex-end;margin-top:-4px; }
+}
+
+@media(max-width:900px){
+  .account-page .account-shell { padding-top:18px; }
+  .account-command-bar { grid-template-columns:1fr;gap:12px;padding:15px;border-radius:18px; }
+  .account-command-greeting { min-width:0; }
+  .account-command-greeting h1 { font-size:1.3rem; }
+  .account-command-bar .portal-tabs { width:100%; }
+  .account-command-actions { grid-column:auto;justify-content:space-between;margin-top:0; }
+  .portal-action-grid { grid-template-columns:1fr; }
+  .portal-action-card { min-height:104px; }
+}
+
+@media(max-width:520px){
+  .account-page .account-shell { padding-top:10px; }
+  .account-command-bar { margin-bottom:14px;padding:13px 12px; }
+  .account-command-greeting > span { display:none; }
+  .account-command-greeting h1 { font-size:1.2rem; }
+  .account-command-bar .portal-tabs { margin-left:-2px;margin-right:-2px;width:calc(100% + 4px); }
+  .account-command-bar .portal-tabs button { padding:8px 10px;font-size:.75rem; }
+  .account-command-actions .account-apply-button { flex:1; }
+  .portal-action-card { grid-template-columns:44px 1fr auto;min-height:92px;padding:16px; }
+  .portal-action-icon { width:44px;height:44px;border-radius:14px; }
+  .portal-action-copy strong { font-size:1rem; }
+}

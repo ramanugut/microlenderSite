@@ -1,0 +1,165 @@
+/* Shared customer-facing UX polish.
+ * Keeps the site focused on the next useful action and removes unnecessary vertical weight.
+ */
+
+.page-hero{padding:46px 0 42px}
+.page-hero .breadcrumbs{margin-bottom:14px}
+.page-hero .eyebrow{margin-bottom:10px}
+.page-hero .lead{max-width:680px;margin-top:12px;font-size:1rem;line-height:1.55}
+.compact-info-page .section{padding:58px 0}
+.compact-info-page .page-hero{padding-bottom:34px}
+
+.site-photo{margin:0;overflow:hidden;border:1px solid var(--line);border-radius:24px;background:#eef3f7;box-shadow:var(--shadow)}
+.site-photo picture{display:block;width:100%;height:100%}
+.site-photo img{display:block;width:100%;height:100%;min-height:360px;object-fit:cover;object-position:center}
+.site-photo-wide{margin-top:34px}
+.site-photo-wide img{height:auto;min-height:0;max-height:520px;object-fit:cover}
+.careers-photo img{object-position:center 36%}
+.home-steps-layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:24px;align-items:stretch;margin-top:36px}
+.home-steps-layout .home-steps-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:0}
+.home-steps-photo{min-height:430px}
+.home-steps-photo img{min-height:430px}
+.hero-life-picture{display:block;width:100%;height:100%;min-height:138px;overflow:hidden}
+
+.received-page{padding:44px 0 70px}
+.received-card{max-width:720px;margin:0 auto;padding:34px}
+.received-card .eyebrow{margin-bottom:8px}
+.received-card h1{max-width:600px;margin-left:auto;margin-right:auto;font-size:clamp(1.8rem,4vw,2.5rem);line-height:1.1}
+.received-card>p{max-width:590px;margin:12px auto 0}
+.reference-box{margin:22px auto 0}
+.received-actions{margin-top:24px}
+
+/* Logged-in and task screens do not need marketing chrome. */
+.account-page .top-strip,
+.auth-page .top-strip{display:none!important}
+.auth-page .desktop-nav{display:none!important}
+.auth-page .auth-simple-head .eyebrow,
+.auth-page .identity-security-note-simple{display:none}
+.auth-page .auth-main-simple{padding-top:36px}
+.auth-page .auth-layout-simple .auth-card{box-shadow:0 16px 42px rgba(5,57,99,.08)}
+.auth-page .site-header .nav-actions>*,
+.auth-page .mobile-panel{display:none!important}
+.auth-page [data-site-footer]{display:none!important}
+
+.received-body .top-strip,
+.received-body .desktop-nav,
+.received-body .site-header .nav-actions>*{display:none!important}
+.received-body .site-header .nav-wrap{min-height:62px}
+.received-body .mobile-panel,
+.received-body [data-site-footer]{display:none!important}
+
+.application-page.smart-application .top-strip,
+.application-page.smart-application .desktop-nav,
+.application-page.smart-application .site-header .nav-actions>*{display:none!important}
+.application-page.smart-application .site-header .nav-wrap{min-height:62px}
+.application-page.smart-application .mobile-panel,
+.application-page.smart-application [data-site-footer]{display:none!important}
+
+[data-placeholder-only]{display:none!important}
+
+@media(max-width:980px){
+  .top-strip{display:none!important}
+  .mobile-panel{inset:70px 0 0!important}
+  .site-header .nav-wrap{min-height:70px}
+  .site-header .nav-actions:not(.portal-global-actions)>.nav-link,
+  .site-header .nav-actions:not(.portal-global-actions)>.btn-primary{display:none!important}
+  body:not(.account-page):not(.application-page) .hero + .section-tight{display:none}
+  .home-steps-layout{grid-template-columns:1fr}
+  .home-steps-photo{min-height:320px}
+  .home-steps-photo img{min-height:320px;max-height:460px}
+}
+
+@media(max-width:640px){
+  .container{width:min(calc(100% - 24px),var(--max))}
+  .section,.compact-info-page .section{padding:44px 0}
+  .page-hero,.compact-info-page .page-hero{padding:28px 0 26px}
+  .page-hero .breadcrumbs{display:none}
+  .page-hero .eyebrow{margin-bottom:7px;font-size:.7rem}
+  .page-hero .h1{font-size:clamp(1.85rem,9vw,2.5rem);line-height:1.06}
+  .page-hero .lead{margin-top:9px;font-size:.91rem;line-height:1.45}
+  .site-header .nav-wrap{min-height:64px}
+  .mobile-panel{inset:64px 0 0!important}
+  .brand{font-size:1.25rem}
+  .brand-mark{width:34px;height:34px;border-radius:10px}
+  .menu-btn{width:40px;height:40px;border-radius:11px}
+  .cards-3,.cards-4{margin-top:24px}
+  .card{padding:20px;border-radius:18px}
+  .split{gap:32px}
+  .site-photo{border-radius:18px}
+  .site-photo img{min-height:260px}
+  .site-photo-wide{margin-top:24px}
+  .site-photo-wide img{min-height:0;max-height:330px}
+  .home-steps-layout{margin-top:24px;gap:18px}
+  .home-steps-layout .home-steps-cards{grid-template-columns:1fr;gap:12px}
+  .home-steps-photo,.home-steps-photo img{min-height:250px;max-height:300px}
+  .faq{margin-top:24px}
+  summary{padding:16px 0}
+  .received-page{padding:24px 0 44px}
+  .received-card{padding:24px 18px;border-radius:18px}
+  .received-card>p{font-size:.9rem;line-height:1.5}
+  .received-actions{display:grid;grid-template-columns:1fr;gap:9px}
+  .received-actions .btn{width:100%}
+  .auth-page .auth-main-simple{padding-top:18px}
+  .auth-page .auth-layout-simple .auth-card{padding:20px 18px;border-radius:16px}
+  .site-footer{padding:38px 0 22px}
+  .footer-grid{gap:26px}
+  .footer-brand p{display:none}
+  .footer-bottom{margin-top:28px;padding-top:16px;gap:7px}
+}
+
+/* Responsive hardening: keep real customer data readable and inside the viewport. */
+html,body{max-width:100%}
+.container,.application-content,.portal-panel,.portal-row,.account-command-bar,.account-command-bar>*{min-width:0}
+.portal-row strong,.portal-row small,.summary-card strong,.loan-stat-grid strong,.transaction-row,.document-row,.review-item strong,.reference-box strong,.card,.prose,.job{overflow-wrap:anywhere;word-break:normal}
+
+@media(max-width:980px){
+  .mobile-panel{overflow-y:auto;overscroll-behavior:contain;padding-bottom:max(24px,env(safe-area-inset-bottom))}
+  .mobile-panel a,.mobile-panel .btn{min-height:44px;display:flex;align-items:center}
+}
+
+@media(max-width:640px){
+  input,select,textarea{font-size:16px}
+  .btn,.menu-btn,.portal-tabs button,.account-logout-button,.account-command-actions .account-apply-button,.received-actions a,.received-actions button{min-height:44px}
+  .portal-panel-head{align-items:flex-start;flex-wrap:wrap}
+  .portal-panel-head>.btn,.portal-panel-head>a.btn{min-height:44px}
+  .portal-row-actions{gap:10px;flex-wrap:wrap}
+  .portal-row-actions>*{min-height:40px}
+  .account-command-actions{gap:8px;flex-wrap:wrap}
+  .account-command-bar .portal-tabs{scroll-snap-type:x proximity}
+  .account-command-bar .portal-tabs button{scroll-snap-align:start}
+  .application-content form{max-width:100%}
+  .form-actions{padding-bottom:max(14px,env(safe-area-inset-bottom))}
+  .upload-card,.review-section,.consent-box,.choice-panel{min-width:0}
+}
+
+@media(max-width:360px){
+  .container{width:min(calc(100% - 20px),var(--max))}
+  .display{font-size:clamp(2rem,12vw,2.65rem)}
+  .lead{font-size:1rem}
+  .loan-summary{grid-template-columns:1fr}
+  .loan-card{padding:18px;border-radius:20px}
+  .mini-card{padding:12px}
+  .hero-actions,.cta-actions{gap:9px}
+  .account-command-bar{padding:12px 10px}
+  .account-command-actions{display:grid;grid-template-columns:1fr auto;width:100%}
+  .account-command-actions .account-apply-button{min-width:0;padding-inline:12px}
+  .portal-panel{padding:17px}
+  .portal-action-card{grid-template-columns:42px minmax(0,1fr) 32px;padding:14px;gap:11px}
+  .portal-action-icon{width:42px;height:42px}
+  .portal-summary,.loan-stat-grid,.profile-grid{grid-template-columns:1fr}
+  .application-content form{padding:18px 14px;border-radius:18px}
+  .choice-panel{padding:20px 14px}
+  .form-actions{margin-left:-14px;margin-right:-14px;margin-bottom:-18px;padding-left:14px;padding-right:14px}
+  .received-card{padding:22px 16px}
+}
+
+@media(max-width:980px) and (max-height:600px){
+  .mobile-panel{inset:64px 0 0!important}
+  .mobile-panel a{padding-block:10px}
+  .site-header .nav-wrap{min-height:64px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}

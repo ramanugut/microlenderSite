@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>My account | KredRun</title><meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="assets/css/styles.css"><link rel="stylesheet" href="assets/css/account.css"><link rel="stylesheet" href="assets/css/account-portal-polish.css"><link rel="stylesheet" href="assets/css/account-status.css">
+  <style>
+    .account-page.account-booting .account-shell{opacity:0;visibility:hidden;pointer-events:none}
+    .account-page.account-ready .account-shell{animation:accountReveal .18s ease-out both}
+    .account-boot-screen{min-height:calc(100vh - 90px);display:grid;place-items:center;padding:28px}
+    .account-boot-indicator{display:grid;justify-items:center;gap:14px}
+    .account-boot-mark{width:54px;height:54px;display:grid;place-items:center;border-radius:16px;background:linear-gradient(135deg,#2854c7,#13b9d8);color:#fff;font-size:1.8rem;font-weight:900;box-shadow:0 12px 34px rgba(27,102,199,.22)}
+    .account-boot-line{position:relative;width:78px;height:3px;overflow:hidden;border-radius:999px;background:#dfeaf4}
+    .account-boot-line::after{content:"";position:absolute;inset:0;width:34%;border-radius:inherit;background:#1c74d8;animation:accountBoot 1s ease-in-out infinite}
+    .account-page:not(.account-booting) .account-boot-screen{display:none}
+    @keyframes accountBoot{0%{transform:translateX(-120%)}50%{transform:translateX(95%)}100%{transform:translateX(280%)}}
+    @keyframes accountReveal{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+    @media(prefers-reduced-motion:reduce){.account-boot-line::after,.account-page.account-ready .account-shell{animation:none}}
+    .profile-details-section{display:grid;gap:15px;padding:4px 0 26px}.profile-details-section+.profile-details-section{border-top:1px solid #e2ebf3;padding-top:24px}.profile-details-section h3{margin:0;color:#183153;font-size:1rem}.profile-details-section input[readonly]{background:#f3f6f9;color:#66758a;cursor:not-allowed}
+  </style>
+  <link rel="stylesheet" href="assets/css/payments.css?v=20260902-3">
+</head>
+<body class="account-page account-booting">
+  <div data-site-header></div>
+  <div class="account-boot-screen" data-account-boot role="status" aria-label="Loading your account">
+    <div class="account-boot-indicator"><span class="account-boot-mark" aria-hidden="true">K</span><span class="account-boot-line" aria-hidden="true"></span></div>
+  </div>
+  <main class="account-shell"><div class="container">
+    <section class="account-command-bar" aria-label="Customer account navigation">
+      <div class="account-command-greeting">
+        <span>My account</span>
+        <h1>Welcome, <strong data-account-greeting></strong></h1>
+      </div>
+      <nav class="portal-tabs" aria-label="My account"><button class="active" type="button" data-account-nav="overview">Overview</button><button type="button" data-account-nav="applications">Applications</button><button type="button" data-account-nav="loans">Loans</button><button type="button" data-account-nav="details">My details</button></nav>
+      <div class="account-command-actions"><a class="btn account-apply-button" href="apply.html">Apply for a loan</a><button class="account-logout-button" type="button" data-sign-out>Log out</button></div>
+    </section>
+
+    <section data-account-section="overview">
+      <div class="portal-summary"><article class="summary-card latest-application-summary"><span>Latest application</span><strong data-overview-applications></strong></article><article class="summary-card"><span>Active loans</span><strong data-overview-loans></strong></article><article class="summary-card"><span>Next payment</span><strong data-overview-payment></strong></article></div>
+
+      <section class="application-focus-card" data-current-application hidden>
+        <div class="application-focus-top"><div><span>Current application</span><strong data-current-application-title></strong><small data-current-application-reference></small></div><b data-current-application-amount></b></div>
+        <div class="application-stage-track" role="group" aria-label="Application progress"><div data-app-stage="submitted"><i>1</i><span>Submitted</span></div><div data-app-stage="review"><i>2</i><span>Review</span></div><div data-app-stage="decision"><i>3</i><span>Decision</span></div></div>
+        <div class="application-focus-bottom"><strong data-current-application-next></strong><button type="button" data-view-current-application>View application →</button></div>
+      </section>
+
+      <section class="portal-panel portal-shortcuts"><div class="portal-panel-head"><div><span class="eyebrow">Quick access</span><h2>What do you need?</h2></div></div><div class="portal-action-grid">
+        <button class="portal-action-card action-applications" type="button" data-account-nav="applications"><span class="portal-action-icon" aria-hidden="true">A</span><span class="portal-action-copy"><strong>Applications</strong><small>View applications</small></span><span class="portal-action-arrow" aria-hidden="true">→</span></button>
+        <button class="portal-action-card action-loans" type="button" data-account-nav="loans"><span class="portal-action-icon" aria-hidden="true">L</span><span class="portal-action-copy"><strong>Loans</strong><small>Manage loans</small></span><span class="portal-action-arrow" aria-hidden="true">→</span></button>
+        <button class="portal-action-card action-details" type="button" data-account-nav="details"><span class="portal-action-icon" aria-hidden="true">M</span><span class="portal-action-copy"><strong>My details</strong><small>Update details</small></span><span class="portal-action-arrow" aria-hidden="true">→</span></button>
+      </div></section>
+    </section>
+
+    <section class="portal-panel" data-account-section="applications" hidden><div class="portal-panel-head"><div><span class="eyebrow">My applications</span><h2>Application history</h2></div><a class="btn btn-primary" href="apply.html">New application</a></div><div class="portal-list" data-applications-list><div class="portal-loading">Loading applications…</div></div></section>
+
+    <section data-account-section="loans" hidden><section class="portal-panel"><div class="portal-panel-head"><div><span class="eyebrow">My loans</span><h2>Active and previous loans</h2></div></div><div class="portal-list" data-loans-list><div class="portal-loading">Loading loans…</div></div></section><section class="portal-panel loan-detail" data-loan-detail hidden><div class="portal-panel-head"><h2>Loan details</h2><button class="btn btn-outline" type="button" data-close-loan>Close</button></div><div data-loan-detail-content></div></section></section>
+
+    <section class="portal-panel" data-account-section="details" hidden>
+      <div class="portal-panel-head"><div><span class="eyebrow">My details</span><h2>Full client profile</h2><p>These are the same details used in your loan application.</p></div><a class="text-button" href="update-password.html">Change password</a></div>
+      <form id="profileForm">
+        <div class="profile-details-section"><h3>Personal details</h3><div class="profile-grid">
+          <div class="auth-field"><label for="profileFirstName">First name</label><input id="profileFirstName" name="first_name" type="text" required maxlength="80"></div>
+          <div class="auth-field"><label for="profileLastName">Surname</label><input id="profileLastName" name="last_name" type="text" required maxlength="80"></div>
+          <div class="auth-field"><label for="profileIdNumber">South African ID number</label><input id="profileIdNumber" name="id_number" type="text" inputmode="numeric" readonly></div>
+          <div class="auth-field"><label for="profileMobile">Mobile number</label><input id="profileMobile" name="mobile" type="tel" required maxlength="20"></div>
+          <div class="auth-field" data-profile-email-field><label for="profileEmail">Email</label><input id="profileEmail" name="email" type="email" required></div>
+          <div class="auth-field"><label for="profileMaritalStatus">Marital status</label><select id="profileMaritalStatus" name="marital_status" data-profile-options="maritalStatuses" required><option value="">Select</option></select></div>
+          <div class="auth-field"><label for="profileDependants">Number of dependants</label><input id="profileDependants" name="dependants" type="number" min="0" max="20" step="1" required></div>
+          <div class="auth-field"><label for="profileProvince">Province</label><select id="profileProvince" name="province" data-profile-options="provinces" required><option value="">Select</option></select></div>
+          <div class="auth-field full"><label for="profileAddress">Residential address</label><input id="profileAddress" name="residential_address" type="text" required maxlength="180"></div>
+        </div></div>
+        <div class="profile-details-section"><h3>Work and income</h3><div class="profile-grid">
+          <div class="auth-field"><label for="profileEmploymentStatus">Income source</label><select id="profileEmploymentStatus" name="employment_status" data-profile-options="employmentStatuses" required><option value="">Select</option></select></div>
+          <div class="auth-field"><label for="profileIncomeSource">Employer / income source</label><input id="profileIncomeSource" name="income_source_name" type="text" required maxlength="120"></div>
+          <div class="auth-field"><label for="profileJobTitle">Job title / occupation</label><input id="profileJobTitle" name="job_title" type="text" required maxlength="100"></div>
+          <div class="auth-field"><label for="profileEmploymentStart">Employment start month</label><input id="profileEmploymentStart" name="employment_start_month" type="month" required></div>
+          <div class="auth-field"><label for="profileNetIncome">Net monthly income</label><input id="profileNetIncome" name="net_monthly_income" type="number" min="0" step="0.01" required></div>
+          <div class="auth-field"><label for="profilePayFrequency">Pay frequency</label><select id="profilePayFrequency" name="pay_frequency" data-profile-options="payFrequencies" required><option value="">Select</option></select></div>
+          <div class="auth-field"><label for="profilePayDay">Normal pay day</label><input id="profilePayDay" name="pay_day" type="number" min="1" max="31" step="1" placeholder="For monthly pay"></div>
+          <div class="auth-field"><label for="profileIncomePhone">Employer / income source phone</label><input id="profileIncomePhone" name="income_source_phone" type="tel" maxlength="20"></div>
+        </div></div>
+        <div class="profile-details-section"><h3>Monthly affordability</h3><div class="profile-grid">
+          <div class="auth-field"><label>Rent / bond</label><input name="housing_expense" type="number" min="0" step="0.01" required></div>
+          <div class="auth-field"><label>Groceries &amp; household</label><input name="food_expense" type="number" min="0" step="0.01" required></div>
+          <div class="auth-field"><label>Transport</label><input name="transport_expense" type="number" min="0" step="0.01" required></div>
+          <div class="auth-field"><label>Utilities &amp; communication</label><input name="utilities_expense" type="number" min="0" step="0.01" required></div>
+          <div class="auth-field"><label>Insurance / medical</label><input name="insurance_expense" type="number" min="0" step="0.01" required></div>
+          <div class="auth-field"><label>School / childcare / dependants</label><input name="dependant_expense" type="number" min="0" step="0.01" required></div>
+          <div class="auth-field"><label>Existing loans / credit repayments</label><input name="debt_expense" type="number" min="0" step="0.01" required></div>
+          <div class="auth-field"><label>Other regular expenses</label><input name="other_expense" type="number" min="0" step="0.01" required></div>
+        </div></div>
+        <div class="profile-details-section"><h3>Bank details</h3><div class="profile-grid">
+          <div class="auth-field"><label for="profileBank">Bank</label><select id="profileBank" name="bank_name" data-profile-options="banks" data-placeholder="Select your bank" required><option value="">Select your bank</option></select></div>
+          <div class="auth-field"><label for="profileAccountType">Account type</label><select id="profileAccountType" name="bank_account_type" data-profile-options="accountTypes" required><option value="">Select</option></select></div>
+          <div class="auth-field"><label for="profileAccountHolder">Account holder</label><input id="profileAccountHolder" name="bank_account_holder" type="text" readonly required></div>
+          <div class="auth-field"><label for="profileAccountNumber">Account number</label><input id="profileAccountNumber" name="bank_account_number" type="text" inputmode="numeric" minlength="6" maxlength="20" pattern="[0-9]{6,20}" required></div>
+          <div class="auth-field"><label for="profileBranchCode">Universal branch code</label><input id="profileBranchCode" name="branch_code" type="text" readonly required></div>
+        </div></div>
+        <div class="account-action-row"><button class="btn btn-primary" type="submit">Save details</button><span class="profile-message" data-profile-message aria-live="polite"></span></div>
+      </form>
+    </section>
+  </div></main>
+  <div data-site-footer></div>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/supabase-page-bootstrap.js?v=20260904-5" data-page="your account" data-scripts="assets/js/supabase-config.js?v=20260904-5,assets/js/production-hardening.js?v=20260904-5,assets/js/auth-client.js?v=20260904-5,assets/js/client-profile-schema.js?v=20260904-1,assets/js/account.js?v=20260904-5,assets/js/account-status.js?v=20260904-5,assets/js/account-payments.js?v=20260904-5,assets/js/account-ready.js?v=20260904-5"></script>
+</body></html>
