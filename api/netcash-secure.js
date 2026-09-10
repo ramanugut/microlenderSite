@@ -1,8 +1,7 @@
 import netcashHandler from './netcash.js';
-import { requireStaffSession } from '../server/supabase-rest.js';
-import { sendError } from '../server/http.js';
+import { HttpError, sendError } from '../server/http.js';
 
-const PUBLIC_OR_CLIENT_ACTIONS = new Set([
+const CLIENT_OR_CALLBACK_ACTIONS = new Set([
   'request',
   'notify',
   'debicheck_postback',
@@ -14,11 +13,11 @@ const PUBLIC_OR_CLIENT_ACTIONS = new Set([
 export default async function handler(req, res) {
   const action = String(req.query?.action || '').trim().toLowerCase();
   try {
-    if (!PUBLIC_OR_CLIENT_ACTIONS.has(action)) {
-      await requireStaffSession(req, ['owner','manager','collections','underwriter']);
+    if (!CLIENT_OR_CALLBACK_ACTIONS.has(action)) {
+      throw new HttpError(404, 'Unknown client Netcash action.', 'invalid_netcash_action');
     }
     return await netcashHandler(req, res);
   } catch (error) {
-    return sendError(res, error, `Secure Netcash ${action || 'request'} failed`);
+    return sendError(res, error, `Secure client Netcash ${action || 'request'} failed`);
   }
 }
